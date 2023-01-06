@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
+	"opencloud-server/common/api"
 	"opencloud-server/database"
 	"opencloud-server/model"
 	"opencloud-server/response"
@@ -49,5 +50,17 @@ func Register(context *gin.Context) {
 	}
 
 	database.AddNewUser(&newUser)
-	response.Success(context, nil, "注册成功")
+
+	//自动登录
+	api.LoginFunction(telephone, password, context, user)
+
+}
+
+func Login(context *gin.Context) {
+	var user model.User
+	telephone := context.PostForm("telephone")
+	password := context.PostForm("password")
+
+	api.LoginFunction(telephone, password, context, user)
+
 }

@@ -9,4 +9,5 @@ import (
 func RunRouter(Server *gin.Engine) {
 	Server.Use(middleware.CORSMiddleWare())
 	Server.POST("/api/register", controller.Register)
+	Server.POST("/api/login", controller.Login)
 }
