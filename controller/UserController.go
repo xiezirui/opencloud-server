@@ -3,6 +3,7 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
+	"log"
 	"net/http"
 	"opencloud-server/common/api"
 	"opencloud-server/database"
@@ -12,6 +13,7 @@ import (
 )
 
 func Register(context *gin.Context) {
+	log.Print("111")
 	var user model.User
 
 	context.Bind(&user)

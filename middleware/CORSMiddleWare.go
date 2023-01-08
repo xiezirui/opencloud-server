@@ -19,6 +19,5 @@ func CORSMiddleWare() gin.HandlerFunc {
 			context.AbortWithStatus(200)
 		}
 		context.Next()
-
 	}
 }
