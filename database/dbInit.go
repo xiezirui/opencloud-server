@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"opencloud-server/model"
+	"opencloud-server/model/dao"
 )
 
 // init DB connect to mysql
@@ -27,7 +27,7 @@ func CloseDatabase(db *gorm.DB) {
 
 // sync struct to table
 func SyncStruct(db *gorm.DB) {
-	err := db.AutoMigrate(&model.User{})
+	err := db.AutoMigrate(&dao.User{})
 	if err != nil {
 		fmt.Println("error")
 	}

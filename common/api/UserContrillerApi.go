@@ -7,11 +7,12 @@ import (
 	"net/http"
 	"opencloud-server/common"
 	"opencloud-server/database"
-	"opencloud-server/model"
+	"opencloud-server/model/dao"
+	"opencloud-server/model/dto"
 	"opencloud-server/response"
 )
 
-func LoginFunction(telephone string, password string, context *gin.Context, user model.User) {
+func LoginFunction(telephone string, password string, context *gin.Context, user dao.User, userDto *dto.UserDto) {
 	if len(telephone) != 11 {
 		response.Response(context, http.StatusUnprocessableEntity, 422, nil, "手机号必须为11位")
 		return
@@ -34,5 +35,9 @@ func LoginFunction(telephone string, password string, context *gin.Context, user
 		log.Printf("token generate error : %v", err)
 		return
 	}
-	response.Success(context, gin.H{"token": token}, "登录成功")
+
+	dto.ToUserDto(user, userDto)
+
+	response.Success(context, gin.H{"token": token, "user": userDto}, "登录成功")
+	log.Printf("%v", userDto)
 }

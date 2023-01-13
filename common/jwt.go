@@ -2,7 +2,7 @@ package common
 
 import (
 	"github.com/golang-jwt/jwt"
-	"opencloud-server/model"
+	"opencloud-server/model/dao"
 	"time"
 )
 
@@ -13,7 +13,7 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-func ReleaseToken(user model.User) (string, error) {
+func ReleaseToken(user dao.User) (string, error) {
 	expiration := time.Now().Add(7 * 24 * time.Hour)
 	claims := &Claims{
 		UserId: user.ID,
