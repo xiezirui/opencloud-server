@@ -5,7 +5,7 @@ import (
 )
 
 type UserDto struct {
-	ID        uint
+	ID        string
 	Name      string
 	Telephone string
 }

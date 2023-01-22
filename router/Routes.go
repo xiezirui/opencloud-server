@@ -13,4 +13,8 @@ func RunRouter(Server *gin.Engine) {
 	Server.POST("/api/auth/upName", controller.UpdataName)
 	Server.POST("/api/auth/upPassword", controller.UpdataPassword)
 	Server.POST("/api/auth/checkOldPassword", controller.CheckOldPassword)
+
+	Server.POST("/api/blog/release", controller.AddBlog)
+	Server.POST("/api/blog/get", controller.GetBlogs)
+	Server.POST("/api/upload", controller.UploadFile)
 }

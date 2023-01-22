@@ -18,7 +18,7 @@ func LoginFunction(telephone string, password string, context *gin.Context, user
 		return
 	}
 	database.GetUserByTelephone(telephone, &user)
-	if user.ID == 0 {
+	if user.ID == "" {
 		response.Response(context, http.StatusUnprocessableEntity, 422, nil, "用户不存在")
 		return
 	}

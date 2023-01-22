@@ -1,16 +1,16 @@
 package dto
 
 type UpNameDto struct {
-	ID   uint
+	ID   string
 	Name string
 }
 
 type UpPasswordDto struct {
-	ID       uint
+	ID       string
 	Password string
 }
 
 type CheckOldPassowrdDto struct {
-	ID          uint
+	ID          string
 	OldPassword string
 }

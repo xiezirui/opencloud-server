@@ -9,7 +9,7 @@ import (
 var jwtKey = []byte("a_secret_creat")
 
 type Claims struct {
-	UserId uint
+	UserId string
 	jwt.StandardClaims
 }
 
